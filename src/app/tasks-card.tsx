@@ -1,34 +1,14 @@
 import { ChevronRight } from '@mui/icons-material'
-import {
-  Box,
-  Card,
-  Chip,
-  Divider,
-  IconButton,
-  Stack,
-  Typography,
-} from '@mui/material'
-import { useUnit } from 'effector-react'
+import { Box, Card, Chip, Divider, IconButton, Stack } from '@mui/material'
 import { useState } from 'react'
 
-import { CreateTask } from '@/features'
+import { ClearCompletedTasks, CreateTask } from '@/features'
 
 import { task } from '@/entities'
 
 import { pxToRem } from '@/shared/lib'
 
 import { TaskList } from './task-list'
-
-const TasksLeft = () => {
-  const tasksLeft = useUnit(task.$activeTasksLength)
-
-  return (
-    <Typography variant="caption">
-      {!tasksLeft || tasksLeft === 0 ? 'No' : tasksLeft} item
-      {(tasksLeft ?? 0) > 1 || !tasksLeft ? 's' : ''} left
-    </Typography>
-  )
-}
 
 export const TasksCard = () => {
   const [filterKey, setFilterKey] = useState<task.FilterKey | null>(null)
@@ -98,7 +78,7 @@ export const TasksCard = () => {
         justifyContent="space-between"
         width="100%"
       >
-        <TasksLeft />
+        <task.TasksLeft />
         <Stack flexDirection="row" gap={pxToRem(12)}>
           <Chip
             label="All"
@@ -116,6 +96,7 @@ export const TasksCard = () => {
             />
           ))}
         </Stack>
+        <ClearCompletedTasks />
       </Stack>
     </Card>
   )

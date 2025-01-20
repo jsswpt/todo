@@ -1,4 +1,4 @@
-import { createEffect, createStore } from 'effector'
+import { createEffect, createStore, sample } from 'effector'
 
 import { getInitialTasksReq } from '../api'
 import { taskFilters } from '../lib'
@@ -26,10 +26,23 @@ export const $activeTasksLength = $tasks.map(
   (state) => (state ?? []).filter(taskFilters.active.func).length ?? null
 )
 
+export const $completedTasksLength = $tasks.map(
+  (state) => (state ?? []).filter(taskFilters.completed.func).length ?? null
+)
+
 $tasks.on(getInitialTasksFx.doneData, (_, value) => {
   if (!value.length) {
     localStorage.setItem('tasks', JSON.stringify(mockTasks))
   }
 
   return value.length ? value : mockTasks
+})
+
+sample({
+  clock: $tasks,
+  source: $isFetched,
+  filter: (src) => src,
+  fn: (_, clk) => {
+    localStorage.setItem('tasks', JSON.stringify(clk))
+  },
 })

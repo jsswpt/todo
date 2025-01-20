@@ -18,6 +18,8 @@ export const $tasks = createStore<Array<Task> | null>([
   },
 ])
 
+$tasks.watch(console.log)
+
 $tasks.on(
   getInitialTasks,
   () => JSON.parse(localStorage.getItem('tasks') ?? '[]') as Array<Task>

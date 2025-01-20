@@ -10,7 +10,7 @@ export type SubmitValue = {
 export const handleSubmit = createEvent<SubmitValue>()
 
 task.$tasks.on(handleSubmit, (state, { id, title }) =>
-  state?.map((item) => (item.id === id ? { ...item, title } : item))
+  state!.map((item) => (item.id === id ? { ...item, title } : item))
 )
 
 type DeleteValue = { id: number }

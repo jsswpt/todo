@@ -1,0 +1,45 @@
+{
+  "name": "todo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "watch": "vite --port 3000",
+    "build": "tsc -b && vite build",
+    "fix:lint": "npx eslint . --fix --cache --cache-location './node_modules/.cache/eslint/.eslint-cache'",
+    "fix:prettier": "npx prettier . --write --cache",
+    "watch:nodemon": "nodemon --quiet --watch . -e ts,js,tsx,json,html --exec",
+    "watch:prettier": "npm run watch:nodemon 'npm run fix:prettier'",
+    "watch:lint": "npm run watch:nodemon 'npm run fix:lint'",
+    "preview": "vite preview",
+    "test": "npm run fix:lint && npm run fix:prettier",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.0",
+    "@mui/material": "^6.4.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.18.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "eslint-plugin-sort": "^4.0.0",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "nodemon": "^3.1.9",
+    "prettier": "3.4.2",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.20.0",
+    "vite": "^6.0.5"
+  }
+}

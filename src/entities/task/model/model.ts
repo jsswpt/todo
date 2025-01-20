@@ -6,12 +6,17 @@ export type Task = {
   id: number
   title: string
   isDone: boolean
-  creationDate: Date
 }
 
 export const getInitialTasks = createEvent()
 
-export const $tasks = createStore<Array<Task> | null>(null)
+export const $tasks = createStore<Array<Task> | null>([
+  {
+    id: 1,
+    isDone: false,
+    title: 'First task',
+  },
+])
 
 $tasks.on(
   getInitialTasks,

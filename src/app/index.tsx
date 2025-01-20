@@ -1,5 +1,7 @@
 import { Box, Container, Stack, Typography } from '@mui/material'
 
+import { CreateTask } from '@/features'
+
 import { pxToRem } from '@/shared/lib'
 
 import { MUIProvider } from './providers'
@@ -18,6 +20,7 @@ export const App = MUIProvider(() => (
           <Typography variant="h1" color="textDisabled">
             todos
           </Typography>
+          <CreateTask />
           <TaskList />
           <Box>// content</Box>
         </Stack>

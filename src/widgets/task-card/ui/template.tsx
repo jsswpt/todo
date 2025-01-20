@@ -9,7 +9,7 @@ type TemplateProps = {
 }
 
 export const Template = ({ isDoneToggler, taskField }: TemplateProps) => (
-  <Card sx={{ width: '100%' }}>
+  <Card sx={{ width: '100%', borderRadius: 0 }}>
     <Stack
       paddingX={pxToRem(8)}
       paddingY={pxToRem(4)}

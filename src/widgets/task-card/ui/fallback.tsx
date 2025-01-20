@@ -1,16 +1,10 @@
-import { Skeleton } from '@mui/material'
-
-import { EditTask } from '@/features'
-
-import { sizes } from '@/shared/configs'
+import { EditTask, ToggleTaskStatus } from '@/features'
 
 import { Template } from './template'
 
 export const Fallback = () => (
   <Template
-    isDoneToggler={
-      <Skeleton width={sizes.sm} height={sizes.sm} variant="circular" />
-    }
+    isDoneToggler={<ToggleTaskStatus isFallback />}
     taskField={<EditTask isFallback />}
   />
 )

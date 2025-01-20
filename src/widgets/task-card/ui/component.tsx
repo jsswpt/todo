@@ -1,6 +1,4 @@
-import { Checkbox } from '@mui/material'
-
-import { EditTask } from '@/features'
+import { EditTask, ToggleTaskStatus } from '@/features'
 
 import { task } from '@/entities'
 
@@ -10,7 +8,7 @@ type ComponentProps = task.Task
 
 export const Component = ({ id, isDone, title }: ComponentProps) => (
   <Template
-    isDoneToggler={<Checkbox size="small" checked={isDone} />}
+    isDoneToggler={<ToggleTaskStatus id={id} isDone={isDone} />}
     taskField={<EditTask id={id} title={title} />}
   />
 )

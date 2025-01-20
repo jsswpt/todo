@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 import { task } from '@/entities'
 
-import { handleDelete, handleSubmit } from '../model/model'
+import { handleDelete, handleSubmit } from '../model'
 import { Template } from './template'
 
 type ComponentProps = Omit<task.Task, 'isDone'>

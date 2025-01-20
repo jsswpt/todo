@@ -1,6 +1,10 @@
-import { createEvent, createStore } from 'effector'
+import { createEffect, createStore } from 'effector'
 
 import { normalizeData } from '@/shared/lib'
+
+import { getInitialTasksReq } from '../api'
+
+export const getInitialTasksFx = createEffect(getInitialTasksReq)
 
 export type Task = {
   id: number
@@ -8,20 +12,20 @@ export type Task = {
   isDone: boolean
 }
 
-export const getInitialTasks = createEvent()
+const mockTasks: Array<Task> = [
+  { id: 1, isDone: true, title: 'Open app' },
+  { id: 2, isDone: false, title: 'Create new task' },
+]
 
-export const $tasks = createStore<Array<Task> | null>([
-  {
-    id: 1,
-    isDone: false,
-    title: 'First task',
-  },
-])
+export const $tasks = createStore<Array<Task> | null>(null)
 
-$tasks.on(
-  getInitialTasks,
-  () => JSON.parse(localStorage.getItem('tasks') ?? '[]') as Array<Task>
-)
+$tasks.on(getInitialTasksFx.doneData, (_, value) => {
+  if (!value.length) {
+    localStorage.setItem('tasks', JSON.stringify(mockTasks))
+  }
+
+  return value.length ? value : mockTasks
+})
 
 export const $normalizedTasks = $tasks.map((state) =>
   normalizeData(state ?? [])

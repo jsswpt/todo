@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "watch": "vite --port 3000",
+    "start": "vite --port 3000",
     "build": "tsc -b && vite build",
     "fix:lint": "npx eslint . --fix --cache --cache-location './node_modules/.cache/eslint/.eslint-cache'",
     "fix:prettier": "npx prettier . --write --cache",

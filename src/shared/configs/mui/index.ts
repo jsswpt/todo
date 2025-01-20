@@ -1,3 +1,14 @@
 import { createTheme } from '@mui/material'
 
-export const theme = createTheme({})
+import { pxToRem } from '@/shared/lib'
+
+export const theme = createTheme({
+  typography: {
+    allVariants: {
+      lineHeight: '125%',
+    },
+    h1: {
+      fontSize: pxToRem(64),
+    },
+  },
+})

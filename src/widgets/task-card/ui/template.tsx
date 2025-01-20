@@ -9,14 +9,13 @@ type TemplateProps = {
 }
 
 export const Template = ({ isDoneToggler, taskField }: TemplateProps) => (
-  <Card>
+  <Card sx={{ width: '100%' }}>
     <Stack
       paddingX={pxToRem(8)}
       paddingY={pxToRem(4)}
       flexDirection="row"
       alignItems="center"
       gap={pxToRem(8)}
-      width="100%"
     >
       <Box>{isDoneToggler}</Box>
       <Box flex={1} overflow="hidden">

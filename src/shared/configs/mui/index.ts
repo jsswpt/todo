@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material'
 
 import { pxToRem } from '@/shared/lib'
 
-const sizes = {
+export const sizes = {
   sm: pxToRem(32),
   md: pxToRem(44),
   lg: pxToRem(56),

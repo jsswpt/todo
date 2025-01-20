@@ -8,9 +8,9 @@ const Component = lazy(() =>
   import('./component').then((m) => ({ default: m.Component }))
 )
 
-type Props = task.Task
+type Props = Omit<task.Task, 'isDone'>
 
-type TaskCardProps =
+type EditTaskProps =
   | {
       isFallback: true
     }
@@ -18,7 +18,7 @@ type TaskCardProps =
       isFallback?: false
     } & Props)
 
-export const TaskCard = ({ isFallback, ...rest }: TaskCardProps) =>
+export const EditTask = ({ isFallback, ...rest }: EditTaskProps) =>
   isFallback ? (
     <Fallback />
   ) : (

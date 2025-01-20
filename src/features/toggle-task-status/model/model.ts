@@ -9,7 +9,7 @@ type ToggleValue = {
 export const toggleTaskStatus = createEvent<ToggleValue>()
 
 task.$tasks.on(toggleTaskStatus, (state, { id }) =>
-  state?.map((item) =>
+  state!.map((item) =>
     item.id === id ? { ...item, isDone: !item.isDone } : item
   )
 )

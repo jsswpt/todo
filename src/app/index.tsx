@@ -1,6 +1,8 @@
 import { Box, Stack, Typography } from '@mui/material'
-import { MUIProvider } from './providers'
+
 import { pxToRem } from '@/shared/lib'
+
+import { MUIProvider } from './providers'
 
 export const App = MUIProvider(() => (
   <Stack

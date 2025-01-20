@@ -12,7 +12,7 @@
     "watch:prettier": "npm run watch:nodemon 'npm run fix:prettier'",
     "watch:lint": "npm run watch:nodemon 'npm run fix:lint'",
     "preview": "vite preview",
-    "vitest": "vitest",
+    "vitest": "vitest run",
     "test": "npm run fix:lint && npm run fix:prettier && npm run vitest",
     "prepare": "husky"
   },

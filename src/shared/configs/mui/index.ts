@@ -1,5 +1,6 @@
-import { pxToRem } from '@/shared/lib'
 import { createTheme } from '@mui/material'
+
+import { pxToRem } from '@/shared/lib'
 
 export const theme = createTheme({
   typography: {

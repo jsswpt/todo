@@ -1,10 +1,13 @@
 import { createEffect, createStore } from 'effector'
 
-import { normalizeData } from '@/shared/lib'
-
 import { getInitialTasksReq } from '../api'
+import { taskFilters } from '../lib'
 
 export const getInitialTasksFx = createEffect(getInitialTasksReq)
+
+export const $isFetched = createStore(false)
+
+$isFetched.on(getInitialTasksFx.finally, () => true)
 
 export type Task = {
   id: number
@@ -19,6 +22,10 @@ const mockTasks: Array<Task> = [
 
 export const $tasks = createStore<Array<Task> | null>(null)
 
+export const $activeTasksLength = $tasks.map(
+  (state) => (state ?? []).filter(taskFilters.active.func).length ?? null
+)
+
 $tasks.on(getInitialTasksFx.doneData, (_, value) => {
   if (!value.length) {
     localStorage.setItem('tasks', JSON.stringify(mockTasks))
@@ -26,7 +33,3 @@ $tasks.on(getInitialTasksFx.doneData, (_, value) => {
 
   return value.length ? value : mockTasks
 })
-
-export const $normalizedTasks = $tasks.map((state) =>
-  normalizeData(state ?? [])
-)

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { lazy, memo, Suspense } from 'react'
 
 import { task } from '@/entities'
 
@@ -18,7 +18,7 @@ type TaskCardProps =
       isFallback?: false
     } & Props)
 
-export const TaskCard = ({ isFallback, ...rest }: TaskCardProps) =>
+export const TaskCard = memo(({ isFallback, ...rest }: TaskCardProps) =>
   isFallback ? (
     <Fallback />
   ) : (
@@ -26,3 +26,4 @@ export const TaskCard = ({ isFallback, ...rest }: TaskCardProps) =>
       <Component {...(rest as Props)} />
     </Suspense>
   )
+)

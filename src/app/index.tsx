@@ -2,14 +2,12 @@ import { Box, Container, Stack, Typography } from '@mui/material'
 import { sample } from 'effector'
 import { createGate, useGate } from 'effector-react'
 
-import { CreateTask } from '@/features'
-
 import { task } from '@/entities'
 
 import { pxToRem } from '@/shared/lib'
 
 import { MUIProvider } from './providers'
-import { TaskList } from './task-list'
+import { TasksCard } from './tasks-card'
 
 const appGate = createGate()
 
@@ -34,9 +32,7 @@ export const App = MUIProvider(() => {
             <Typography variant="h1" color="textDisabled">
               todos
             </Typography>
-            <CreateTask />
-            <TaskList />
-            <Box>// content</Box>
+            <TasksCard />
           </Stack>
         </Stack>
       </Container>

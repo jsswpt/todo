@@ -26,6 +26,16 @@ export const theme = createTheme({
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        sizeSmall: {
+          height: sizes.sm,
+        },
+        sizeMedium: {
+          height: sizes.md,
+        },
+      },
+    },
     MuiCheckbox: {
       styleOverrides: {
         sizeSmall: {
